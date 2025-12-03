@@ -189,4 +189,24 @@ pip install umap-learn
 
 Then I installed the Waymo dataset using ```pip3 install waymo-open-dataset-tf-2-12-0==1.6.7```
 
+Successfully installed:
+
+> Successfully installed dacite-1.8.1 einsum-0.3.0 immutabledict-2.2.0 jax-0.4.13 jaxlib-0.4.13 matplotlib-3.6.1 waymo-open-dataset-tf-2-12-0-1.6.7
+
+
+Failed after building mmedetection repo due to a x server error:
+
+<img width="848" height="325" alt="image" src="https://github.com/user-attachments/assets/241ab485-9fa4-48a4-a871-d5b6e4a6b747" />
+
+I found it was because mmcv never properly built:
+
+<img width="851" height="836" alt="image" src="https://github.com/user-attachments/assets/027bc603-656a-4e8e-8467-8c93311c152b" />
+
+Failure caused by:
+
+> nvc-Error-x86_64-v2 not supported - x86_64-v3 is minimum supported
+    
+> nvc-Error-x86_64-v2 not supported - x86_64-v3 is minimum supported
+
+> nvc-Error-x86_64-v2 not supported - x86_64-v3 is minimum supported
 
