@@ -8,6 +8,7 @@ email: xinye.zhang@sjsu.edu
 
 ## Project report and set up is in report.md: https://github.com/DonielzhongSJSU/CMPE249-HW2/blob/main/report.md 
 
+## Detailed project report with screen shots and environment set up is in: https://github.com/DonielzhongSJSU/CMPE249-HW2/blob/main/detailed_report.md
 # Homework Instructions
 ## Goal
 
