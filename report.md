@@ -131,3 +131,62 @@ MMCV_WITH_OPS=1 CUDA_HOME=/usr/local/cuda-12.6 \
 Again, I get multiple errors during compilation:
 
 <img width="1135" height="591" alt="image" src="https://github.com/user-attachments/assets/400f29be-ebe8-475f-87b4-647c026b3aae" />
+
+At the end, I was unable to resolve the issue so I attempted redoing everything on the HPC from the school...
+
+# 7 Reattempting to run on SJSU's HPC
+
+I set up all the pre-reqs for ssh'ing in to the device.
+
+## 7.1 Installing anaconda
+
+It was stuck and eventually failed because of a failed connection to anaconda:
+
+<img width="842" height="136" alt="image" src="https://github.com/user-attachments/assets/7ff01a87-8986-4096-a01b-271cfb66827d" />
+
+I found the issue was that the HPC was blocked to receive external incoming packages. I could not even ping google...
+
+<img width="677" height="101" alt="image" src="https://github.com/user-attachments/assets/9f16dfc4-a3d4-4dce-9db8-2945a8b79e7c" />
+
+In the end, after playing with some setting, I got conda set up using `curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+` and installed using `bash Miniconda3-latest-Linux-x86_64.sh`.
+
+I then sourced and set up the conda env
+```
+source ~/.bashrc
+conda create --name mycondapy311  
+conda activate mycondapy311
+```
+Next I set up the cuda in the HPC env
+
+```
+module load nvhpc-hpcx-cuda12/24.11
+nvcc --version
+```
+<img width="631" height="139" alt="image" src="https://github.com/user-attachments/assets/0b24209a-1ab5-4aac-aa1e-bc782ec1729e" />
+
+## 7.2 Installing PyTorch on HPC
+
+I installed PyTorch Using:
+```
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+python -m torch.utils.collect_env
+```
+
+## 7.3 Installing additional tools and Data Sets
+
+I installed huggingface tools using:
+```
+pip install transformers
+pip install datasets
+pip install sentencepiece
+pip install scikit-learn
+pip install accelerate
+pip install evaluate
+pip install xformers  # may adjust torch and CUDA-related packages
+pip install umap-learn
+```
+
+Then I installed the Waymo dataset using ```pip3 install waymo-open-dataset-tf-2-12-0==1.6.7```
+
+
